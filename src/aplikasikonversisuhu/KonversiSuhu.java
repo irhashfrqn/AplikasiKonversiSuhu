@@ -241,15 +241,11 @@ public class KonversiSuhu extends javax.swing.JFrame {
     }//GEN-LAST:event_suhuAKeyReleased
 
     private void pilsuhuAItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_pilsuhuAItemStateChanged
-//        if (evt.getStateChange() == ItemEvent.SELECTED && !invertOpt.isSelected()) {
             updateHasilKonversi();
-//        }        
     }//GEN-LAST:event_pilsuhuAItemStateChanged
 
     private void pilsuhuBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_pilsuhuBItemStateChanged
-//        if (evt.getStateChange() == ItemEvent.SELECTED && !invertOpt.isSelected()) {
             updateHasilKonversi();
-//        }
     }//GEN-LAST:event_pilsuhuBItemStateChanged
 
     private void invertOptItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_invertOptItemStateChanged
@@ -312,27 +308,6 @@ public class KonversiSuhu extends javax.swing.JFrame {
         });
         
     }
-
-//    private void updateHasilKonversi() {
-//    String suhuAwalString = suhuA.getText();
-//    double suhuAwal;
-//
-//    if (suhuAwalString.isEmpty()) {
-//        suhuAwal = 0.0;
-//        suhuA.setText("0");
-//    } else {
-//        suhuAwal = Double.parseDouble(suhuAwalString);
-//    }
-//
-//    String namasuhuAwal = (String) pilsuhuA.getSelectedItem();
-//    String namasuhuTujuan = (String) pilsuhuB.getSelectedItem();
-//
-//    SatuanSuhu satuanAwal = SatuanSuhu.valueOf(namasuhuAwal.toUpperCase());
-//    SatuanSuhu satuanTujuan = SatuanSuhu.valueOf(namasuhuTujuan.toUpperCase());
-//
-//    Double hasil = convertSuhu(suhuAwal, satuanAwal, satuanTujuan);
-//    suhuB.setText(hasil.toString());
-//}
     
     private void updateHasilKonversi() {
         try {
@@ -366,12 +341,12 @@ public class KonversiSuhu extends javax.swing.JFrame {
 //            double suhuAwal = 0.0;
             suhuA.setText("0");
             if (invertOpt.isSelected()) {
-                suhuA.setText("Invalid Input");
+                suhuA.setText("Inputan Salah");
             } else {
-                suhuB.setText("Invalid Input");
+                suhuB.setText("Inputan Salah");
             }
         }
-}
+    }
 
     
     private void validasiAngka(KeyEvent evt) {
@@ -399,62 +374,55 @@ public class KonversiSuhu extends javax.swing.JFrame {
     }
 
     private double convertSuhu(double suhuAwal, SatuanSuhu satuanAwal, SatuanSuhu satuanTujuan) {
-//    String namasuhuAwal = (String) pilsuhuA.getSelectedItem();
-//    String namasuhuTujuan = (String) pilsuhuB.getSelectedItem();
-    
-//    SatuanSuhu satuanAwal = SatuanSuhu.valueOf(namasuhuAwal.toUpperCase());
-//    SatuanSuhu satuanTujuan = SatuanSuhu.valueOf(namasuhuTujuan.toUpperCase());
-//    double suhuAwal = Double.parseDouble(suhuA.getText());
-    
-    switch (satuanAwal) {
-        case CELCIUS:
-            switch (satuanTujuan) {
-                case FAHRENHEIT:
-                    return (suhuAwal * 9.0 / 5) + 32;
-                case KELVIN:
-                    return suhuAwal + 273.15;
-                case REAMUR:
-                    return suhuAwal * 4.0 / 5;
-                default:
-                    return suhuAwal;
-            }
-        case FAHRENHEIT:
-            switch (satuanTujuan) {
-                case CELCIUS:
-                    return (suhuAwal - 32) * 5.0 / 9;
-                case KELVIN:
-                    return (suhuAwal + 459.67) * 5.0 / 9;
-                case REAMUR:
-                    return (suhuAwal - 32) * 4.0 / 9;
-                default:
-                    return suhuAwal;
-            }
-        case KELVIN:
-            switch (satuanTujuan) {
-                case CELCIUS:
-                    return suhuAwal - 273.15;
-                case FAHRENHEIT:
-                    return (suhuAwal * 9.0 / 5) - 459.67;
-                case REAMUR:
-                    return (suhuAwal - 273.15) * 4.0 / 5;
-                default:
-                    return suhuAwal;
-            }
-        case REAMUR:
-            switch (satuanTujuan) {
-                case CELCIUS:
-                    return suhuAwal * 5.0 / 4;
-                case FAHRENHEIT:
-                    return (suhuAwal * 9.0 / 4) + 32;
-                case KELVIN:
-                    return (suhuAwal * 5.0 / 4) + 273.15;
-                default:
-                    return suhuAwal;
-            }
-        default:
-            throw new IllegalArgumentException("Satuan awal tidak valid");
+        switch (satuanAwal) {
+            case CELCIUS:
+                switch (satuanTujuan) {
+                    case FAHRENHEIT:
+                        return (suhuAwal * 9.0 / 5) + 32;
+                    case KELVIN:
+                        return suhuAwal + 273.15;
+                    case REAMUR:
+                        return suhuAwal * 4.0 / 5;
+                    default:
+                        return suhuAwal;
+                }
+            case FAHRENHEIT:
+                switch (satuanTujuan) {
+                    case CELCIUS:
+                        return (suhuAwal - 32) * 5.0 / 9;
+                    case KELVIN:
+                        return (suhuAwal + 459.67) * 5.0 / 9;
+                    case REAMUR:
+                        return (suhuAwal - 32) * 4.0 / 9;
+                    default:
+                        return suhuAwal;
+                }
+            case KELVIN:
+                switch (satuanTujuan) {
+                    case CELCIUS:
+                        return suhuAwal - 273.15;
+                    case FAHRENHEIT:
+                        return (suhuAwal * 9.0 / 5) - 459.67;
+                    case REAMUR:
+                        return (suhuAwal - 273.15) * 4.0 / 5;
+                    default:
+                        return suhuAwal;
+                }
+            case REAMUR:
+                switch (satuanTujuan) {
+                    case CELCIUS:
+                        return suhuAwal * 5.0 / 4;
+                    case FAHRENHEIT:
+                        return (suhuAwal * 9.0 / 4) + 32;
+                    case KELVIN:
+                        return (suhuAwal * 5.0 / 4) + 273.15;
+                    default:
+                        return suhuAwal;
+                }
+            default:
+                throw new IllegalArgumentException("Satuan awal tidak valid");
+        }
     }
-}
 
     
     
